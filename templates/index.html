@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detección de Personas, Gatos y Plantas</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div id="loader-container">
+    <div id="loader"></div>
+  </div>
+  <div class="container mt-5">
+    <h1 class="text-center"><i>WebApp Detector de Personas, Gatos y Plantas</i></h1>
+
+    <div class="card d-flex align-items-center justify-content-between">
+      <div class="card-body">
+        <form id="detection-form" action="/detect" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="file-input"><b>Seleccionar imagen:</b></label>
+            <input type="file" class="form-control-file" id="file-input" name="file">
+          </div>
+          <button type="submit" class="btn btn-primary">Detectar objetos</button>
+          <button type="reset" class="btn btn-secondary" id="clear-button">Limpiar campos</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Espacio para mostrar la previsualización de la imagen -->
+    <div class="mt-4">
+      <div class="card" style="text-align: center;">
+        <div class="card-body" style="display: flex; justify-content: space-between; align-items: center;">
+          <div class="image-container">
+            <h3>Vista previa de la imagen:</h3>
+            <img id="selected-image" src="/static/default.jpg" alt="Previsualización de la imagen" class="img-fluid"
+              style="max-width: 100%; max-height: 200px;">
+          </div>
+          <div class="image-container">
+            <h3>Resultados de detección:</h3>
+            <img id="detection-image" src="/static/img-detect.png" alt="Objetos detectados" class="img-fluid"
+              style="max-width: 100%; max-height: 200px;">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <h2>Resultados:</h2>
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p class="font-weight-bold">Personas detectadas: <span id="personCount"
+                  class="font-weight-normal">0</span></p>
+            </div>
+            <div class="col">
+              <p class="font-weight-bold">Gatos detectados: <span id="catCount" class="font-weight-normal">0</span></p>
+            </div>
+            <div class="col">
+              <p class="font-weight-bold">Plantas detectadas: <span id="plantCount" class="font-weight-normal">0</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Espacio para mostrar la imagen detectada -->
+    <!-- <div class="mt-4">
+      <h2>Objetos Detectados:</h2>
+      <div class="card" style="text-align: center;">
+        <div class="card-body" style="display: flex; justify-content: center; align-items: center; height: 300px;">
+          <img id="detection-image" src="" alt="Objetos detectados" class="img-fluid"
+            style="max-width: 100%; max-height: 100%;">
+        </div>
+      </div>
+    </div> -->
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../static/script.js"></script>
+</body>
+
+</html>
